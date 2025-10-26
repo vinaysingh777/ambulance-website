@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin:0; padding:0;
+}
+
+header {
+    background: #ff3b3b;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: #fff;
+    color: #ff3b3b;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.service-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+}
+
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
