@@ -1,0 +1,52 @@
+name: 🚀 Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js (for cache clear & build if needed)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies (if needed)
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "No Node dependencies to install"
+          fi
+
+      - name: Build project (optional)
+        run: |
+          if [ -f package.json ]; then
+            npm run build || echo "No build step"
+          else
+            echo "No build script found"
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          force_orphan: true
+
+      - name: Clear GitHub Pages cache
+        run: |
+          curl -X PURGE "https://thedevops.store"
+
